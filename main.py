@@ -1,6 +1,5 @@
 from wordlist import worddict
 from random import choice
-import time
 
 
 correct = []
