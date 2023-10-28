@@ -4,7 +4,6 @@ import time
 
 
 correct = []
-time.sleep(10)
 while len(correct) != 50:
     key = choice(list(worddict.keys()))
     while key in correct:
