@@ -1,6 +1,5 @@
 from wordlist import worddict
 from random import choice
-import os
 import time
 
 
@@ -8,9 +7,7 @@ wrong_count: int = 0
 wrong = []
 correct = []
 while len(correct) != 50:
-    key = choice(list(worddict.keys()))
-    while key in correct:
-        key = choice(list(worddict.keys()))
+    key = choice([i for i in worddict.keys() if not (i in correct)])
     print(f"{key}: ", end='')
     word = input()
     if word == worddict[key]:
@@ -24,6 +21,7 @@ while len(correct) != 50:
         time.sleep(2)
 
 print(f'종료, 틀린 횟수: {wrong_count}')
-print(f'한번 이상 틀린 단어: ')
+if wrong_count > 0:
+    print(f'한번 이상 틀린 단어: ')
 for key in wrong:
     print(f'    {key}: {worddict[key]}')
